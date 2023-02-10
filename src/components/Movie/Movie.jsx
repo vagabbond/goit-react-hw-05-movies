@@ -21,7 +21,7 @@ export const Movie = () => {
 
   return (
     <>
-      <h1>Movie with id: {id}</h1>
+      <h1>Movie with id: {movie.id}</h1>
     </>
   );
 };
