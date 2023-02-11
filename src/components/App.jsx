@@ -11,11 +11,11 @@ export const App = () => {
   return (
     <>
       <CardWraper>
-        <StyledLink to="/">Home</StyledLink>
+        <StyledLink to="/goit-react-hw-05-movies">Home</StyledLink>
         <StyledLink to="/movies">About</StyledLink>
       </CardWraper>
       <Routes>
-        <Route path="/" element={<TrendingMovies />} />
+        <Route path="/goit-react-hw-05-movies" element={<TrendingMovies />} />
         <Route path="/movies" element={<Search />} />
         <Route path="/movies/:id" element={<Movie />}>
           <Route path="/movies/:id/cast" element={<MovieCast />} />
