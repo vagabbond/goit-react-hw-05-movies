@@ -1,13 +1,17 @@
 import { SearchBar } from '../SearchBar/SearchBar';
 
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const KEY = '41ab92c3df4691a01a2e362c5f7f74c0';
 
 export const Search = () => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
+  const location = useLocation();
+  useEffect(() => {
+    setQuery(location.search.split('=')[1]);
+  }, [location]);
 
   useEffect(() => {
     if (!query) return;
@@ -36,7 +40,9 @@ export const Search = () => {
             {movies.map(movie => {
               return (
                 <li key={movie.id}>
-                  <Link to={`${movie.id}`}>{movie.title || movie.name}</Link>
+                  <Link to={`${movie.id}`} state={{ from: location }}>
+                    {movie.title || movie.name}
+                  </Link>
                 </li>
               );
             })}

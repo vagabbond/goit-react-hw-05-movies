@@ -1,5 +1,7 @@
-import { Outlet, useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { Outlet, useParams, useLocation } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+
+import { BackLink } from 'components/BackLink';
 
 import {
   MovieWrapper,
@@ -18,6 +20,8 @@ const KEY = '41ab92c3df4691a01a2e362c5f7f74c0';
 export const Movie = () => {
   const [movie, setMovie] = useState(null);
   const { id } = useParams();
+  const location = useLocation();
+  const backLinkHref = useRef(location.state?.from || '/');
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -33,6 +37,8 @@ export const Movie = () => {
     <>
       {movie && (
         <>
+          <BackLink to={backLinkHref.current}> Back</BackLink>
+
           <CardWraper>
             <img
               src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}

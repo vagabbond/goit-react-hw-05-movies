@@ -1,8 +1,10 @@
 import { SearchInput, SearchForm, SearchButton } from './SearchBar.styled.jsx';
-import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 export const SearchBar = ({ onSubmit }) => {
-  const [query, setQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const query = searchParams.get('query') ?? '';
   return (
     <SearchForm
       onSubmit={e => {
@@ -16,7 +18,7 @@ export const SearchBar = ({ onSubmit }) => {
         autoFocus
         placeholder="Search movies"
         value={query}
-        onChange={e => setQuery(e.target.value)}
+        onChange={e => setSearchParams({ query: e.currentTarget.value })}
       />
       <SearchButton type="submit">Search</SearchButton>
     </SearchForm>
