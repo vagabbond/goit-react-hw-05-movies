@@ -10,8 +10,7 @@ import {
 } from './Home.styled';
 
 const KEY = '41ab92c3df4691a01a2e362c5f7f74c0';
-
-export const TrendingMovies = () => {
+const TrendingMovies = () => {
   const [movies, setMovies] = useState([]);
   const location = useLocation();
 
@@ -30,7 +29,7 @@ export const TrendingMovies = () => {
           return (
             <TrendingItem key={el.id}>
               <TrendingItemLink
-                to={`/movies/${el.id}`}
+                to={`movies/${el.id}`}
                 state={{ from: location }}
               >
                 <p>{el.title || el.name}</p>
@@ -42,3 +41,5 @@ export const TrendingMovies = () => {
     </CardWraper>
   );
 };
+
+export default TrendingMovies;

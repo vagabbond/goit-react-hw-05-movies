@@ -5,7 +5,7 @@ import { CastWrapper, CastList, CastTitle, CastItem } from './MovieCast.styled';
 
 const KEY = '41ab92c3df4691a01a2e362c5f7f74c0';
 
-export const MovieCast = () => {
+const MovieCast = () => {
   const [cast, setCast] = useState(null);
   const [error, setError] = useState(null);
 
@@ -53,3 +53,5 @@ export const MovieCast = () => {
     </CastWrapper>
   );
 };
+
+export default MovieCast;

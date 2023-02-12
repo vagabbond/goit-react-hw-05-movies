@@ -1,11 +1,12 @@
-import { SearchBar } from '../SearchBar/SearchBar';
+
+import { SearchBar } from '../../components/SearchBar/SearchBar';
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const KEY = '41ab92c3df4691a01a2e362c5f7f74c0';
 
-export const Search = () => {
+const Search = () => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const location = useLocation();
@@ -52,3 +53,6 @@ export const Search = () => {
     </>
   );
 };
+
+
+export default Search;

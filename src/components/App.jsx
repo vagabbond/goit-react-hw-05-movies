@@ -1,27 +1,24 @@
 import { Routes, Route } from 'react-router-dom';
+import { lazy } from 'react';
+import { SharedLayout } from './SharedLayout';
 
-import { CardWraper, StyledLink } from './App.styled';
-import { TrendingMovies } from './Home/Home';
-import { Search } from './Search/Search';
-import { Movie } from './Movie/Movie';
-import { MovieCast } from './Movie/MovieCast/MovieCast';
-import { MovieReviews } from './Movie/MovieReviews/MovieReviews';
+const TrendingMovies = lazy(() => import('../pages/Home/Home'));
+const Search = lazy(() => import('../pages/Search/Search'));
+const Movie = lazy(() => import('../pages/Movie/Movie'));
+const MovieCast = lazy(() => import('./MovieCast/MovieCast'));
+const MovieReviews = lazy(() => import('./MovieReviews/MovieReviews'));
 
 export const App = () => {
   return (
-    <>
-      <CardWraper>
-        <StyledLink to="/goit-react-hw-05-movies">Home</StyledLink>
-        <StyledLink to="/movies">About</StyledLink>
-      </CardWraper>
-      <Routes>
-        <Route path="/goit-react-hw-05-movies" element={<TrendingMovies />} />
-        <Route path="/movies" element={<Search />} />
-        <Route path="/movies/:id" element={<Movie />}>
-          <Route path="/movies/:id/cast" element={<MovieCast />} />
-          <Route path="/movies/:id/reviews" element={<MovieReviews />} />
+    <Routes>
+      <Route path="/goit-react-hw-05-movies" element={<SharedLayout />}>
+        <Route index element={<TrendingMovies />} />
+        <Route path="movies" element={<Search />} />
+        <Route path="movies/:id" element={<Movie />}>
+          <Route path="cast" element={<MovieCast />} />
+          <Route path="reviews" element={<MovieReviews />} />
         </Route>
-      </Routes>
-    </>
+      </Route>
+    </Routes>
   );
 };

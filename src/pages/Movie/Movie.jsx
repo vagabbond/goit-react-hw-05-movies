@@ -1,5 +1,6 @@
+
 import { Outlet, useParams, useLocation } from 'react-router-dom';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, Suspense } from 'react';
 
 import { BackLink } from 'components/BackLink';
 
@@ -17,7 +18,7 @@ import {
 
 const KEY = '41ab92c3df4691a01a2e362c5f7f74c0';
 
-export const Movie = () => {
+const Movie = () => {
   const [movie, setMovie] = useState(null);
   const { id } = useParams();
   const location = useLocation();
@@ -70,9 +71,14 @@ export const Movie = () => {
               </li>
             </MovieNavList>
           </MovieNav>
-          <Outlet />
+          <Suspense fallback={<div>Loading subpage...</div>}>
+            <Outlet />
+          </Suspense>
         </>
       )}
     </>
   );
 };
+
+
+export default Movie;

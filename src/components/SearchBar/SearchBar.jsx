@@ -1,5 +1,8 @@
-import { SearchInput, SearchForm, SearchButton } from './SearchBar.styled.jsx';
+
+import PropTypes from 'prop-types';
 import { useSearchParams } from 'react-router-dom';
+
+import { SearchInput, SearchForm, SearchButton } from './SearchBar.styled.jsx';
 
 export const SearchBar = ({ onSubmit }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -23,4 +26,8 @@ export const SearchBar = ({ onSubmit }) => {
       <SearchButton type="submit">Search</SearchButton>
     </SearchForm>
   );
+};
+
+SearchBar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };

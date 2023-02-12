@@ -11,7 +11,7 @@ import {
 
 const KEY = '41ab92c3df4691a01a2e362c5f7f74c0';
 
-export const MovieReviews = () => {
+const MovieReviews = () => {
   const [reviews, setReviews] = useState(null);
   const [error, setError] = useState(null);
 
@@ -54,3 +54,5 @@ export const MovieReviews = () => {
     </ReviewsWrapper>
   );
 };
+
+export default MovieReviews;
