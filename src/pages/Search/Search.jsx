@@ -1,4 +1,3 @@
-
 import { SearchBar } from '../../components/SearchBar/SearchBar';
 
 import { useState, useEffect } from 'react';
@@ -11,7 +10,8 @@ const Search = () => {
   const [movies, setMovies] = useState([]);
   const location = useLocation();
   useEffect(() => {
-    setQuery(location.search.split('=')[1]);
+    if (!location.search) return;
+    setQuery(decodeURIComponent(location.search.split('=')[1]));
   }, [location]);
 
   useEffect(() => {
@@ -21,20 +21,15 @@ const Search = () => {
         `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&language=en-US&query=${query}&page=1`
       );
       const data = await response.json();
-      console.log(data);
       setMovies(data.results);
     };
     fetchMovies();
   }, [query]);
 
-  const onSubmit = query => {
-    setQuery(query);
-  };
-
   return (
     <>
-      <SearchBar onSubmit={onSubmit} />
-      {movies.length > 0 && (
+      <SearchBar />
+      {movies.length > 0 && query.length > 0 && (
         <>
           <h1>Search results for {query}</h1>
           <ul>
@@ -53,6 +48,5 @@ const Search = () => {
     </>
   );
 };
-
 
 export default Search;

@@ -18,14 +18,3 @@ export const SearchForm = styled.form`
   padding-left: 20px;
   padding-top: 20px;
 `;
-
-export const SearchButton = styled.button`
-  width: 100px;
-  height: 30px;
-  border-radius: 5px;
-  border: 1px solid #fff;
-  padding: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-left: 20px;
-`;
