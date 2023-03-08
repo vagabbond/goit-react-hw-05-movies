@@ -8,7 +8,7 @@ export const SharedLayout = () => {
   return (
     <>
       <CardWraper>
-        <StyledLink to="/goit-react-hw-05-movies">Home</StyledLink>
+        <StyledLink to="goit-react-hw-05-movies">Home</StyledLink>
         <StyledLink to="movies">About</StyledLink>
       </CardWraper>
       <Suspense
