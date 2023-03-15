@@ -13,7 +13,7 @@ const Search = () => {
     if (!location.search) return;
     setQuery(decodeURIComponent(location.search.split('=')[1]));
   }, [location]);
-
+  console.log(location);
   useEffect(() => {
     if (!query) return;
     const fetchMovies = async () => {
